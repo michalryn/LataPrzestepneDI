@@ -20,8 +20,8 @@ namespace LataPrzestepneDI.Repositories
 
         public IQueryable<Person> GetEntriesFromToday()
         {
-
-            return _context.Person.Where(p => p.Data == DateTime.Today);
+            DateTime dateTime = DateTime.Today.AddDays(1);
+            return _context.Person.Where(p => p.Data >= DateTime.Today && p.Data < dateTime);
         }
 
         public void AddEntry(Person person)

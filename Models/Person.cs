@@ -41,7 +41,7 @@ namespace LataPrzestepneDI.Models
                 Przestepny = false;
                 Text = "rok nieprzestępny";
             }
-            Data = DateTime.Today;
+            Data = DateTime.Now;
         }
         public string Message()
         {

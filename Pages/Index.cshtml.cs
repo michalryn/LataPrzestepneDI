@@ -23,6 +23,7 @@ namespace LataPrzestepneDI.Pages
         public void OnGet()
         {
             Persons = _personService.GetEntriesFromToday();
+            Persons.OrderByDescending(p => p.Date);
         }
 
         public IActionResult OnPost()
