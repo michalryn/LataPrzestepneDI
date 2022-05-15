@@ -13,6 +13,7 @@ namespace LataPrzestepneDI.Pages
 
         [BindProperty]
         public Person Person { get; set; }
+        [BindProperty]
         public List<PersonVM>? Persons { get; set; }
         public IndexModel(ILogger<IndexModel> logger, IPersonService personService)
         {
@@ -32,8 +33,12 @@ namespace LataPrzestepneDI.Pages
             {
                 TempData["Message"] = Person.AlertMessage();
                 _personService.AddEntry(Person);
+
+                return Redirect("/Index");
             }
-            return Redirect("/Index");
+            Persons = _personService.GetEntriesFromToday();
+            Persons.OrderByDescending(p => p.Date);
+            return Page();
         }
     }
 }
